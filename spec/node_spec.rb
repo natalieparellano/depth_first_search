@@ -10,9 +10,9 @@ describe Node do
       node.value
     end
   end
-  describe "#next" do 
+  describe "#children" do 
     it "is defined" do 
-      node.next
+      node.children
     end
   end
 end
