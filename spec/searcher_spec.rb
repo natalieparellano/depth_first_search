@@ -14,6 +14,7 @@ describe Searcher do
     c.children << g
     a.children = [b, c]
     b.children = [d, e, f]
+    f.children << a
     @tree = Tree.new( a )
   end
 
@@ -95,5 +96,24 @@ describe Searcher do
         expect( searcher.visited ).to eq( ["a", "b", "d", "e", "f", "c", "g", "h"] )
       end
     end
+    # context "with a cycle" do
+    #   before do  
+    #     a = Node.new( "a" )
+    #     b = Node.new( "b" )
+    #     c = Node.new( "c" )
+    #     d = Node.new( "d" )
+    #     e = Node.new( "e" )
+    #     f = Node.new( "f" )
+    #     g = Node.new( "g" )
+    #     h = Node.new( "h" )
+    #     g.children << h
+    #     c.children << g
+    #     a.children = [b, c]
+    #     b.children = [d, e, f]
+    #     f.children << a
+    #     @tree = Tree.new( a )      
+    #   end
+
+    # end
   end
 end 
