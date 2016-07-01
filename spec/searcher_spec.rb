@@ -12,11 +12,8 @@ describe Searcher do
     h = Node.new( "h" )
     g.children << h
     c.children << g
-    a.children << c
-    b.children << d
-    b.children << e
-    b.children << f
-    a.children << b
+    a.children = [b, c]
+    b.children = [d, e, f]
     @tree = Tree.new( a )
   end
 
@@ -52,6 +49,42 @@ describe Searcher do
       it "finds it in the right order" do 
         searcher.search( "b" )
         expect( searcher.visited ).to eq( ["a", "b"] )
+      end
+    end
+    context "searching for c" do 
+      it "finds it in the right order" do 
+        searcher.search( "c" )
+        expect( searcher.visited ).to eq( ["a", "b", "d", "e", "f", "c"] )
+      end
+    end
+    context "searching for d" do 
+      it "finds it in the right order" do 
+        searcher.search( "d" )
+        expect( searcher.visited ).to eq( ["a", "b", "d"] )
+      end
+    end
+    context "searching for e" do 
+      it "finds it in the right order" do 
+        searcher.search( "e" )
+        expect( searcher.visited ).to eq( ["a", "b", "d", "e"] )
+      end
+    end
+    context "searching for f" do 
+      it "finds it in the right order" do 
+        searcher.search( "f" )
+        expect( searcher.visited ).to eq( ["a", "b", "d", "e", "f"] )
+      end
+    end
+    context "searching for g" do 
+      it "finds it in the right order" do 
+        searcher.search( "g" )
+        expect( searcher.visited ).to eq( ["a", "b", "d", "e", "f", "c", "g"] )
+      end
+    end
+    context "searching for h" do 
+      it "finds it in the right order" do 
+        searcher.search( "h" )
+        expect( searcher.visited ).to eq( ["a", "b", "d", "e", "f", "c", "g", "h"] )
       end
     end
   end

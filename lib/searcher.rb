@@ -1,4 +1,5 @@
 require 'tree'
+require 'pry'
 
 class Searcher
   attr_reader :tree, :visited, :pointer
@@ -15,5 +16,16 @@ class Searcher
   private
     def do_search( value )      
       visited << pointer.value
+      puts "visited: #{visited}"
+      puts "pointing at: #{pointer.value}"
+      if pointer.value == value
+        return
+      else
+        pointer.children.each do |node|
+          return if visited.include?( value )
+          @pointer = node
+          do_search( value )
+        end
+      end
     end
 end
