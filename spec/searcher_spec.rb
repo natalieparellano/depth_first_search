@@ -87,5 +87,11 @@ describe Searcher do
         expect( searcher.visited ).to eq( ["a", "b", "d", "e", "f", "c", "g", "h"] )
       end
     end
+    context "searching for i (not in the tree)" do 
+      it "returns nil" do 
+        expect( searcher.search( "i" )).to eq( nil )
+        expect( searcher.visited ).to eq( ["a", "b", "d", "e", "f", "c", "g", "h"] )
+      end
+    end
   end
 end 

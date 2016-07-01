@@ -11,7 +11,11 @@ class Searcher
     @visited = [] # to make it idempotent
     @pointer = tree.head
     do_search( value )
-    return pointer.value
+    if pointer.value == value
+      return value
+    else
+      return nil
+    end
   end
   private
     def do_search( value )      
