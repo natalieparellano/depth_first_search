@@ -36,8 +36,10 @@ describe Searcher do
     it "takes an input value" do 
       searcher.search( "a" )
     end
-    it "returns a node value" do 
-      expect( searcher.search( "a" )).to eq( "a" )
+    it "returns a node" do 
+      found = searcher.search( "a" )
+      expect( found ).to be_a( Node )
+      expect( found.value ).to eq( "a" )
     end
     context "searching for a" do 
       it "finds it in the right order" do 

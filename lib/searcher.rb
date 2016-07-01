@@ -12,7 +12,7 @@ class Searcher
     @pointer = tree.head
     do_search( value )
     if pointer.value == value
-      return value
+      return pointer
     else
       return nil
     end
